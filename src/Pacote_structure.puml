@@ -1,0 +1,205 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "None", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 5,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Pacote",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+Cliente1769726502[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Cliente</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   contratacao: List&lt;Contratacao&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   dataNascimento: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   nome: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Contratacao440430109[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Contratacao</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   dataContratacao: LocalDate [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pacote: Pacote [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   valor: BigDecimal [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Hospedagem2134725425[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Hospedagem</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   endereco: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   nomeHotel: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ItemPacote405092767[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ItemPacote</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   preco: BigDecimal [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LocacaoVeiculo94463743[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LocacaoVeiculo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   marca: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   modelo: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Localidade989038276[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Localidade</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   descricao: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Pacote1911994002[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Pacote</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   descricao: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   items: ItemPacote[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   localidade: Localidade [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TransladoAereo1224660880[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TransladoAereo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   companhiaAerea: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   numeroVoo: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+'edges    
+Cliente1769726502 -> Contratacao440430109[label="contratacao
+[0..*]"];
+Contratacao440430109 -> Pacote1911994002[label="pacote
+[0..1]"];
+ItemPacote405092767 -> Hospedagem2134725425[arrowhead=none, arrowtail=empty, dir=both];
+ItemPacote405092767 -> LocacaoVeiculo94463743[arrowhead=none, arrowtail=empty, dir=both];
+ItemPacote405092767 -> TransladoAereo1224660880[arrowhead=none, arrowtail=empty, dir=both];
+Pacote1911994002 -> ItemPacote405092767[label="items
+[0..*]"];
+Pacote1911994002 -> Localidade989038276[label="localidade
+[0..1]"];
+    
+}
+@enduml

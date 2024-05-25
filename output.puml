@@ -1,0 +1,43 @@
+@startuml
+skinparam classAttributeIconSize 0
+class TransladoAereo{
++ companhiaAerea : String
++ numeroVoo : String
+}
+TransladoAereo --|> ItemPacote
+class Pacote{
++ descricao : String
++ localidade : Localidade
++ items : ItemPacote[]
+}
+class LocacaoVeiculo{
++ marca : String
++ modelo : String
+}
+LocacaoVeiculo --|> ItemPacote
+class ItemPacote{
++ preco : BigDecimal
+}
+class Localidade{
++ descricao : String
+}
+class Hospedagem{
++ nomeHotel : String
++ endereco : String
+}
+Hospedagem --|> ItemPacote
+class Cliente{
++ nome : String
++ dataNascimento : Date
++ contratacao : List<Contratacao>
++ Cliente()
+}
+class Contratacao{
++ valor : BigDecimal
++ dataContratacao : LocalDate
+- pacote : Pacote
++ Contratacao(pacote : Pacote)
+}
+Pacote--"+ localidade" Localidade
+Contratacao--"- pacote" Pacote
+@enduml
